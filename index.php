@@ -1,22 +1,14 @@
 <?php
+require_once('config.php');
+require_once('class/User.class.php');
+
+$user = new User('jkowalski', 'tajneHasło');
 
 
-    require('class/User.class.php');
-    echo "<pre>";
+if($user->login()) {
+    echo "Zalogowano poprawnie";
+} else {
+    echo "Błędny login lub hasło";
+}
 
-
-
-    $db = new mysqli('localhost', 'root', '', 'loginForm');
-    $user = new User("jkowalski","tajneHasło");
-    $user->login();
-
-
-
-    if($user->isAuth()) {
-        echo "Użytkownik zalogowany poprawnie";
-    } else {
-        echo "Błąd logowania";
-    }
-
-    
 ?>
